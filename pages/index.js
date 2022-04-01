@@ -1,7 +1,7 @@
-export default function Home() {
+import Home from "../components/Home/Home"
+
+export default function App() {
   return (
-    <div>
-      t5r7n
-    </div>
+    <Home />
   )
 }
