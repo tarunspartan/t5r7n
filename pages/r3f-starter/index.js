@@ -2,6 +2,7 @@ import React from 'react'
 import { useThree, Canvas, useFrame, extend } from '@react-three/fiber'
 import { useRef } from 'react'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { ACESFilmicToneMapping, sRGBEncoding } from 'three'
 
 extend({ OrbitControls })
 
@@ -18,8 +19,8 @@ const Experience = () => {
   })
 
   return <>
-    <directionalLight position={[1, 2, 3]} intensity={ 1.5 }/>
-    <ambientLight intensity={ 0.5 } />
+    <directionalLight position={[1, 2, 3]} intensity={1.5} />
+    <ambientLight intensity={0.5} />
     <orbitControls args={[camera, gl.domElement]} />
     <group ref={groupRef}>
       <mesh position-x={- 2}>
@@ -41,10 +42,16 @@ const Starter = () => {
 
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden' }}>
-      <Canvas>
+      <Canvas
+        gl={{
+          antialias: true,
+          toneMapping: ACESFilmicToneMapping,
+          outputEncoding: sRGBEncoding
+        }}
+        camera={{ fov: 45, near: 0.1, far: 200, position: [3, 2, 6] }}>
         <Experience />
       </Canvas>
-    </div>
+    </div >
   )
 }
 
