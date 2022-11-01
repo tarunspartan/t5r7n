@@ -42,7 +42,7 @@ const Experience = () => {
                     center
                     distanceFactor={8}
                     occlude={[sphereRef, cubeRef]}
-                >That's a sphere 🟡</Html>
+                >That&apos;s a sphere 🟡</Html>
             </mesh>
         </PivotControls>
         <TransformControls position-x={2} >
